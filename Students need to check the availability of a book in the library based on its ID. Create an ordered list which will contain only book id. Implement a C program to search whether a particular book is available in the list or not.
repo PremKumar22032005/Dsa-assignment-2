@@ -1,0 +1,44 @@
+#include <stdio.h>
+
+#define MAX_BOOKS 100
+
+// Function to perform linear search
+int searchBook(int bookIDs[], int size, int bookID) {
+    for (int i = 0; i < size; i++) {
+        if (bookIDs[i] == bookID) {
+            return i; // Return the index if bookID is found
+        }
+    }
+    return -1; // Return -1 if bookID is not found
+}
+
+int main() {
+    int bookIDs[MAX_BOOKS];
+    int size, bookID, result;
+
+    // Input the number of books
+    printf("Enter the number of books: ");
+    scanf("%d", &size);
+
+    // Input the book IDs
+    printf("Enter the book IDs in ascending order:\n");
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &bookIDs[i]);
+    }
+
+    // Input the book ID to search
+    printf("Enter the book ID to search: ");
+    scanf("%d", &bookID);
+
+    // Search for the book ID
+    result = searchBook(bookIDs, size, bookID);
+
+    // Output the result
+    if (result != -1) {
+        printf("Book ID %d is available at index %d.\n", bookID, result);
+    } else {
+        printf("Book ID %d is not available in the list.\n", bookID);
+    }
+
+    return 0;
+}
