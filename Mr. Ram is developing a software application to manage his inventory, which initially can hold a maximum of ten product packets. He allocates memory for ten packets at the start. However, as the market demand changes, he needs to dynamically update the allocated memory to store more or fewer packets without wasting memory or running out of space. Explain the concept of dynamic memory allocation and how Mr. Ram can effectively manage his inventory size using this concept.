@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int *inventory;
+    int initial_size = 10;
+    int new_size;
+
+    // Initial allocation
+    inventory = (int*)malloc(initial_size * sizeof(int));
+    if (inventory == NULL) {
+        printf("Memory not allocated.\n");
+        return 1;
+    }
+
+    // Simulate increasing inventory size
+    new_size = 20;
+    inventory = (int*)realloc(inventory, new_size * sizeof(int));
+    if (inventory == NULL) {
+        printf("Memory not reallocated.\n");
+        return 1;
+    }
+
+    // Simulate decreasing inventory size
+    new_size = 5;
+    inventory = (int*)realloc(inventory, new_size * sizeof(int));
+    if (inventory == NULL) {
+        printf("Memory not reallocated.\n");
+        return 1;
+    }
+
+    // Free the allocated memory
+    free(inventory);
+
+    return 0;
+}
